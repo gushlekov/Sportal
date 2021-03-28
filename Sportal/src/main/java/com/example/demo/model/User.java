@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.dto.RegisterUserRequestDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,18 +20,36 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String username;
+    @Column
     private String password;
+    @Column
     private String email;
+    @Column
     private LocalDate createdAt;
+    @Column
     private LocalDateTime lastLogin;
-    private Boolean isAdmin = false;
+    @Column
+    private Boolean isAdmin;
 
-    @OneToMany
 
-    private List<News> news;
+    //private List<News> news;
 
-    private List<Comment> comments;
+
+    //private List<Comment> comments;
+
+    public User(RegisterUserRequestDTO userRequestDTO){
+        id = userRequestDTO.getId();
+        username = userRequestDTO.getUsername();
+        password = userRequestDTO.getPassword();
+        email = userRequestDTO.getEmail();
+    }
+
+
+
+
+
 
 
 }

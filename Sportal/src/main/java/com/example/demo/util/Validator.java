@@ -1,5 +1,7 @@
 package com.example.demo.util;
 
+import com.example.demo.exeptions.BadRequestException;
+
 public class Validator {
 
 
@@ -7,29 +9,29 @@ public class Validator {
         return text != null && !text.isEmpty();
     }
 
-    public static boolean validUsername(String username) throws Exception {
+    public static boolean validUsername(String username) {
         String regexUsername = "(\\S){5,}";
         if (validateString(username) && username.matches(regexUsername)) {
             return true;
         }
-        throw new Exception("Username must be at least 6 characters, without spaces");
+        return false;
     }
 
-    public static boolean validPassword(String password) throws Exception {
+    public static boolean validPassword(String password){
         String regPassword = "(\\S){5,}";
-        if (validateString(password) && password.matches(regPassword)){
+        if (password.matches(regPassword)){
             return true;
         }
-        throw new Exception("Password must be at least 5 characters, at least one letter and one number");
+        return false;
 
     }
 
-    public static boolean validEMail(String email) throws Exception {
+    public static boolean validEMail(String email) {
         String regEmail = "[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}".toLowerCase();
-        if (validateString(email) && email.matches(regEmail)){
+        if (email.matches(regEmail)){
             return true;
         }
-        throw new Exception("Invalid email");
+        return false;
     }
 
     public static boolean checkForPositiveNum(int a) {

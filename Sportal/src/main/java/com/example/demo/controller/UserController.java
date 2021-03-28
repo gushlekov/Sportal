@@ -15,7 +15,7 @@ public class UserController extends AbstractController{
     UserService userService;
 
 
-    @PutMapping("/users")
+    @PutMapping("/register")
     public RegisterUserResponseDTO register(@RequestBody RegisterUserRequestDTO userDTO) {
         return userService.addUser(userDTO);
 
